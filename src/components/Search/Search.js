@@ -97,7 +97,7 @@ class Search extends Component {
         }
       })
       .catch(error => {
-        console.log(error);
+        this.handleError(error.response.data.message);
       });
   }
 
