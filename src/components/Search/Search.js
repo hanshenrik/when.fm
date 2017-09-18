@@ -41,9 +41,7 @@ class Search extends Component {
     this.usernameInput.focus();
   }
 
-  fetchNextPage = (page) => {
-    console.log(`Fetching page ${page}`);
-    // TODO: might need to do this somewhere else to be able to abort previous when doing new search
+  fetchPage = (page) => {
     var axiosSource = axios.CancelToken.source();
     this.setState({ axiosSource: axiosSource });
 
@@ -85,19 +83,16 @@ class Search extends Component {
         this.props.chart.series[0].setData(newData);
 
         if (parseInt(page, 10) >= parseInt(totalPages, 10)) {
-          console.log('Finished!')
           this.setState({
             isFetchingData: false,
             isFinishedFetchingData: true,
           });
         }
         else {
-          console.log('else');
-          this.fetchNextPage(page + 1);
+          this.fetchPage(page + 1);
         }
       })
       .catch(error => {
-        console.log(error)
         if (error.response) {
           this.handleError(error.response.data.message);
         }
@@ -117,7 +112,7 @@ class Search extends Component {
       error: null,
     });
 
-    this.fetchNextPage(1);
+    this.fetchPage(1);
 
     this.props.chart.setTitle({ text: `${this.state.username}'s listening pattern` });
     this.props.chart.series[0].setData(new Array(24).fill(0));
