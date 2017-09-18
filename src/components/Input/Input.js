@@ -35,10 +35,16 @@ const SpinnerInsideInputField = styled(Spinner)`
   position: absolute;
 `
 
-const Input = ({ isLoading, ...props }) => (
+const PageProgress = styled.div`
+  float: right;
+  opacity: ${props => props.show ? '1' : '0'};
+`
+
+const Input = ({ isLoading, currentPage, totalPages, ...props }) => (
   <div>
     {isLoading && <SpinnerInsideInputField name="line-scale" color="#222" fadeIn="none" />}
     <InputField {...props} />
+    <PageProgress show={currentPage && totalPages}>{`page ${currentPage}/${totalPages}`}</PageProgress>
   </div>
 )
 

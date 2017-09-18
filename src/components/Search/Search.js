@@ -25,6 +25,8 @@ class Search extends Component {
       error: null,
       axiosSource: null,
       progress: 0,
+      currentPage: null,
+      totalPages: null,
     };
 
     this.handleChange = this.handleChange.bind(this);
@@ -63,7 +65,11 @@ class Search extends Component {
         const page = parseInt(metadata.page, 10);
         const totalPages = parseInt(metadata.totalPages, 10);
 
-        this.setState({ progress: (page/totalPages)*100 })
+        this.setState({
+          progress: (page/totalPages)*100,
+          currentPage: page,
+          totalPages: totalPages,
+        })
 
         if (totalPages < 1) {
           this.handleError('No data found');
@@ -110,6 +116,8 @@ class Search extends Component {
       fetchedUsername: this.state.username,
       isAborted: false,
       error: null,
+      currentPage: null,
+      totalPages: null,
     });
 
     this.fetchPage(1);
@@ -145,6 +153,9 @@ class Search extends Component {
             isLoading={this.state.isFetchingData}
             disabled={this.state.isFetchingData}
             innerRef={(input) => { this.usernameInput = input }}
+            isLoading={this.state.isFetchingData}
+            currentPage={this.state.currentPage}
+            totalPages={this.state.totalPages}
           />
         </form>
         <div className="search-info">
