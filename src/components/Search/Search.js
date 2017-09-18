@@ -7,6 +7,7 @@ import './Search.css';
 import lastFmClient from '../../clients/lastFmClient.js';
 
 import Button from '../Buttons/Button.js';
+import Form from '../Form/Form.js';
 import Input from '../Input/Input.js';
 import Loader from '../Loader/Loader.js';
 import ErrorMessage from '../Messages/ErrorMessage.js';
@@ -142,7 +143,7 @@ class Search extends Component {
   render() {
     return (
       <div className="search">
-        <form onSubmit={this.handleSubmit}>
+        <Form onSubmit={this.handleSubmit}>
           <Input
             autoFocus={true}
             name="username"
@@ -150,14 +151,13 @@ class Search extends Component {
             placeholder="last.fm username"
             value={this.state.username}
             onChange={this.handleChange}
-            isLoading={this.state.isFetchingData}
             disabled={this.state.isFetchingData}
             innerRef={(input) => { this.usernameInput = input }}
             isLoading={this.state.isFetchingData}
             currentPage={this.state.currentPage}
             totalPages={this.state.totalPages}
           />
-        </form>
+        </Form>
         <div className="search-info">
           {this.state.isFetchingData && <Button onClick={this.handleAbort} disabled={!this.state.isFetchingData}><FaStopCircle />&nbsp;Abort</Button>}
           {this.state.isFinishedFetchingData && <SuccessMessage>Finished fetching data for <strong>{this.state.fetchedUsername}</strong>!</SuccessMessage>}
