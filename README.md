@@ -11,6 +11,5 @@ Since I haven't made this into a proper app yet, you'll need to provide your own
 
 # Running
 
-```
-  $ yarn start
-```
+    $ yarn install
+    $ yarn start
