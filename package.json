@@ -3,7 +3,7 @@
   "version": "0.0.1",
   "private": true,
   "dependencies": {
-    "axios": "^0.16.2",
+    "axios": "^0.18.1",
     "config": "^1.26.2",
     "react": "^15.6.1",
     "react-dom": "^15.6.1",
