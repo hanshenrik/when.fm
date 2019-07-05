@@ -4,14 +4,14 @@
   "private": true,
   "dependencies": {
     "axios": "^0.18.1",
-    "config": "^1.26.2",
-    "react": "^15.6.1",
-    "react-dom": "^15.6.1",
-    "react-highcharts": "^12.0.0",
+    "config": "^3.1.0",
+    "react": "^16.8.6",
+    "react-dom": "^16.8.6",
+    "react-highcharts": "^16.0.2",
     "react-icons": "^2.2.5",
     "react-scripts": "1.0.13",
     "react-spinkit": "^3.0.0",
-    "styled-components": "^2.1.2"
+    "styled-components": "^4.3.2"
   },
   "scripts": {
     "start": "react-scripts start",
